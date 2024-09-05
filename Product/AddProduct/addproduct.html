@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Cattle Form</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Form Styling */
+      form {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="email"],
+      input[type="file"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background: #5cb85c;
+        color: #fff;
+        border: none;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      input[type="submit"]:hover {
+        background: #4cae4c;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        form {
+          width: calc(100% - 40px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      action="submit_cattle.php"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="cattle_id">Cattle ID:</label>
+      <input type="text" id="cattle_id" name="cattle_id" required />
+
+      <label for="cattle_photo">Cattle Photo:</label>
+      <input
+        type="file"
+        id="cattle_photo"
+        name="cattle_photo"
+        accept="image/*"
+        required
+      />
+
+      <label for="cattle_categories">Cattle Categories:</label>
+      <select id="cattle_categories" name="cattle_categories" required>
+        <option value="dairy">Dairy</option>
+        <option value="draft">Agriculture Used</option>
+        <!-- Add more categories as needed -->
+      </select>
+
+      <label for="cattle_breed">Cattle Breed:</label>
+      <input type="text" id="cattle_breed" name="cattle_breed" required />
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required />
+
+      <!-- Additional fields -->
+      <label for="age">Age (in years):</label>
+      <input type="number" id="age" name="age" required />
+
+      <label for="weight">Weight (in kg):</label>
+      <input type="number" id="weight" name="weight" required />
+
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        required
+      ></textarea>
+
+      <input type="submit" value="Add Cattle" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        color: black;
+        background-color: white;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 45rem;
+        border: 3px solid #8364e6;
+        border-radius: 8px;
+      }
+      #nav-logo img {
+        width: 15rem;
+        height: auto; /* Adjust for proper aspect ratio */
+      }
+      nav > ul {
+        display: flex;
+        gap: 2rem;
+        align-items: center; /* Center items vertically */
+        list-style: none;
+      }
+
+      nav > ul > li > a {
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* Styling for the popup */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 3px solid black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        text-align: center;
+        width: 30rem;
+        height: 10rem;
+        border-radius: 20px;
+        filter: blur(0); /* Initially no blur */
+        transition: filter 0.3s ease; /* Smooth transition for blur effect */
+      }
+      .popup.blur {
+        filter: blur(5px); /* Add blur effect when the popup is displayed */
+      }
+      .popup > h2 {
+        font-size: 2.5rem;
+      }
+      .popup > .btn {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+      }
+      .popup > .btn > button {
+        color: black;
+        width: 7rem;
+        height: 2.5rem;
+        border-radius: 10px;
+        border: 3px solid grey;
+        background-color: white;
+        margin-top: 2rem;
+      }
+      .popup > .btn > button:hover {
+        border: 3px solid black;
+        background-color: grey;
+        color: white;
+      }
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* ---------------- Main:Home------------------------- */
+      /* Home Section */
+      #home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: url("path-to-your-bull-image.jpg") no-repeat center
+          center/cover;
+        text-align: center;
+        /* background-color: #aaa; */
+      }
+      #home > h1 {
+        font-family: "Poppins";
+        margin-bottom: 5rem;
+        font-size: 4rem;
+      }
+      #home > img {
+        width: 22rem;
+        height: 15rem;
+      }
+
+      /* Slogan */
+      .slogan {
+        margin-top: 2rem;
+        font-size: 2.5rem;
+        color: #4a4a4a;
+        text-shadow: 2px 2px 4px #aaa;
+      }
+
+      /* About Section */
+      #about-cms {
+        /* padding: 4rem 0; */
+        /* background-color: #f5f5f5; */
+        text-align: center;
+        height: 90vh;
+      }
+
+      #about-cms .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 1rem;
+      }
+
+      #about-cms h2 {
+        margin-bottom: 2rem;
+        color: #333;
+      }
+
+      #about-cms p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #666;
+        display: flex;
+        justify-content: center;
+        text-align: justify;
+      }
+
+      #about-cms > .container > img {
+        width: 15rem;
+        height: 15rem;
+        border: 2px solid black;
+        border-radius: 50%;
+        padding: 1px;
+      }
+      #about-cms > .container > h5 {
+        font-size: 2rem;
+      }
+      /*-------------------------- Footer-------------------------------  */
+      /* Footer */
+      footer {
+        /* background-color: #333; */
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+        flex-direction: column;
+      }
+
+      .footer-contact,
+      .footer-social {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-contact > h4 {
+        margin-bottom: 4rem;
+        font-size: 2.5rem;
+      }
+
+      .footer-social > a {
+        display: flex;
+      }
+      .footer-social > h4 {
+        margin-top: 4rem;
+        font-size: 2.5rem;
+      }
+      .footer-social > .icon {
+        display: flex;
+      }
+      .footer-social > .icon > :nth-child(3),
+      .footer-social > .icon > :nth-child(4) {
+        width: 45px;
+        height: 45px;
+        margin: 3px;
+      }
+      .productbtn {
+        width: auto;
+        height: auto;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 8px 8px;
+        cursor: pointer;
+      }
+      .productbtn:hover {
+        background-color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header : Navbar -->
+    <div class="header">
+      <nav>
+        <div id="nav-logo">
+          <img src="img\navlogo.png" alt="" />
+        </div>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-cms">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="Product\AddProduct\product.php"
+              ><button class="productbtn">View Product</button></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <!-- Home -->
+      <section id="home">
+        <h1>welcome to Cattle Hub</h1>
+        <img src="img/ox.png" alt="" />
+        <div class="slogan">
+          Bringing the Ranch to Your Reach: Your Premier Cattle Connection!
+        </div>
+      </section>
+      <!-- About Cattle Management System Section -->
+      <section id="about-cms">
+        <div class="container">
+          <h1>About Our Cattle Management System</h1>
+          <img src="img\owner.png" alt="" />
+          <h5>Mr. X</h5>
+
+          <p>
+            The Cattle Hub is an innovative e-commerce platform dedicated to
+            revolutionizing the cattle industry. It serves as a one-stop shop
+            for farmers, offering a comprehensive range of products and services
+            tailored to cattle management. From livestock trading to feed
+            supplies, health care products, and advanced tracking systems, the
+            Cattle Hub simplifies the procurement process with its user-friendly
+            interface and secure payment gateways. It also provides valuable
+            insights through data analytics, helping farmers make informed
+            decisions to enhance productivity and profitability. With a
+            commitment to sustainability and community support, the Cattle Hub
+            is not just a marketplace but a partner in fostering a thriving,
+            eco-friendly cattle sector. This platform is the future of cattle
+            management, merging traditional farming practices with modern
+            technology to create a seamless, efficient, and sustainable
+            ecosystem for cattle farmers worldwide.
+          </p>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><strong>Phone:</strong> +1 234 567 8900</p>
+          <p><strong>Email:</strong> contact@cattlehub.com</p>
+          <p><strong>Address:</strong> 123 Farm Lane, Pastureville, Earth</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <img src="img/facebook.png" alt="" />
+            <img src="img/instagram.png" alt="" />
+            <img src="img/whatsapp.png" alt="" />
+            <img src="img/youtube.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // JavaScript for smooth scrolling when clicking on anchor links
+      $(document).ready(function () {
+        // Add smooth scrolling to all links
+        $("a").on("click", function (event) {
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top,
+              },
+              800,
+              function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              }
+            );
+          } // End if
+        });
+      });
+    </script>
+  </body>
+</html>

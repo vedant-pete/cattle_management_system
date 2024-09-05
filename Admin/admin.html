@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="admin-login-form" action="adminpanel.php" method="post" onsubmit="return validateForm()">
+    <h2>Admin Login</h2>
+    <label for="admin_username">Username:</label>
+    <input type="text" id="admin_username" name="admin_username" required />
+    <label for="admin_password">Password:</label>
+    <input type="password" id="admin_password" name="admin_password" required />
+    <input type="submit" value="Login" />
+  </form>
+  <p style="text-align: center">
+    If you are not Admin click Here
+    <a href="../Product/AddProduct/product.php" style="color: grey; text-decoration: none">For User</a>.
+  </p>
+  <script>
+    function validateForm() {
+      var username = document.getElementById("admin_username").value;
+      var password = document.getElementById("admin_password").value;
+
+      if (username === "admin" && password === "password") {
+        window.location.href = "adminpanel.php";
+        return true; // Proceed to submit the form
+      } else {
+        alert("Incorrect username or password. Please try again.");
+        return false; // Prevent form submission
+      }
+    }
+  </script>
+</body>
+
+</html>
